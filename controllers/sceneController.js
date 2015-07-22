@@ -2,23 +2,23 @@ var Story = require('../models/story');
 var Scene = require('../models/scene');
 
 var sceneController = {
-    create: function(){
+    create: function(req, res){
 
     },
 
-    delete: function(){
+    delete: function(req, res){
 
     },
 
-    update: function(){
+    update: function(req, res){
 
     },
 
-    get: function(){
+    get: function(req, res){
 
     },
 
-    getMultiple: function(){
+    getMultiple: function(req, res){
 
     }
 };
