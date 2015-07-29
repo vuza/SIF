@@ -1,9 +1,13 @@
 var express = require('express');
 var router = require('./router');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 // Init App
 var app = express();
+
+// Connect to DB
+mongoose.connect('mongodb://localhost/sif');
 
 // Init Middleware
 app.use(bodyParser.json());

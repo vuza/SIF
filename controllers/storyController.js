@@ -1,6 +1,7 @@
 var Story = require('../models/story');
 var Scene = require('../models/scene');
 var Choice = require('../models/choice');
+var errHandler = require('./errHandler');
 
 var storyController = {
     create: function(req, res){
@@ -14,11 +15,7 @@ var storyController = {
         });
 
         s.save(function (err) {
-            if (err) {
-                console.error(err);
-                res.status(500).send('nok');
-                return;
-            }
+            if(errHandler.do(err, res)) return;
 
             res.status(200).send('ok');
         });
