@@ -9,11 +9,13 @@ var app = express();
 // Connect to DB
 mongoose.connect('mongodb://localhost/sif');
 
-// Init Middleware
+// Init Bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+
+// Init Access Control
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

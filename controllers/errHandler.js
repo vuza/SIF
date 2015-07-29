@@ -2,7 +2,7 @@ var errHandler = {
     do: function(err, res){
         if(err){
             res.status(500).send('error occurred');
-            console.log(err);
+            console.error(err);
             return true;
         }
 

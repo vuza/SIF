@@ -13,7 +13,7 @@ router.get('/story', storyController.get);
 router.get('/stories', storyController.getMultiple);
 router.put('/story/rate', storyController.rate);
 
-//Scenes
+// Scenes
 router.post('/scene', sceneController.create);
 router.delete('/scene', sceneController.delete);
 router.put('/scene', sceneController.update);

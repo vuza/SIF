@@ -4,10 +4,11 @@ var errHandler = require('./errHandler');
 
 var storyController = {
     create: function(req, res){
-
-        //Test code
+        // Create story
         var s = new Story({
-            title: 'TestStory',
+            title: title,
+            text: text,
+
             author: 'Matthias Wagner',
             scenes: null,
             avgRating: 3
