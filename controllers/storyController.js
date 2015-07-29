@@ -15,10 +15,14 @@ var storyController = {
         });
 
         s.save(function (err) {
-            if (err) return console.error(err);
-        });
+            if (err) {
+                console.error(err);
+                res.status(500).send('nok');
+                return;
+            }
 
-        res.status(200).send('ok');
+            res.status(200).send('ok');
+        });
     },
 
     delete: function(req, res){
