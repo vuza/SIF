@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var storyController = require('./controllers/storyController');
 var sceneController = require('./controllers/sceneController');
 
