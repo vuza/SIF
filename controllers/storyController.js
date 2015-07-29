@@ -1,7 +1,6 @@
-var db = require('../db');
-
 var Story = require('../models/story');
 var Scene = require('../models/scene');
+var Choice = require('../models/choice');
 
 var storyController = {
     create: function(req, res){
