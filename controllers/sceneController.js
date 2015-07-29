@@ -1,5 +1,8 @@
+var Story = require('../models/story');
+var Scene = require('../models/scene');
+
 var sceneController = {
-    create: function(req, res) {
+    create: function(req, res){
 
     },
 
