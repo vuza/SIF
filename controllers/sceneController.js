@@ -1,5 +1,6 @@
 var Story = require('../models/story');
 var Scene = require('../models/scene');
+var Choice = require('../models/choice');
 var errHandler = require('./errHandler');
 
 var sceneController = {

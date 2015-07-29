@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var storySchema = new mongoose.Schema({
+var storySchema = new Schema({
     title: String,
     author: String,
-    scenes: [String],
-    avgRating: {type: Number, min: 1, max: 5}
+    scenes: [{type: Schema.Types.ObjectId, ref: 'Scene'}],
+    avgRating: {type: Number, min: 0, max: 5}
 });
 
 module.exports = mongoose.model('Story', storySchema);

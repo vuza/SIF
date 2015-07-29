@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var sceneSchema = new mongoose.Schema({
+var sceneSchema = new Schema({
     title: String,
     text: String,
     choices: [],	//?
