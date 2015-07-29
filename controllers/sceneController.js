@@ -8,7 +8,6 @@ var sceneController = {
         // Get data
         var title = req['body']['title'];
         var text = req['body']['text'];
-        var choices = (req['body']['choices'] == '' || typeof req['body']['choices'] == 'undefined') ? JSON.parse(req['body']['choices']) : '';
         var start = (req['body']['start'] === 'true');
 
         // Validate data
@@ -69,7 +68,6 @@ var sceneController = {
         var _id = req['body']['_id'];
         var title = req['body']['title'];
         var text = req['body']['text'];
-        var choices = (req['body']['choices'] == '' || typeof req['body']['choices'] == 'undefined') ? JSON.parse(req['body']['choices']) : '';
         var start = (req['body']['start'] === 'true');
 
         // Validate data

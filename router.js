@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var storyController = require('./controllers/storyController');
 var sceneController = require('./controllers/sceneController');
+var choiceController = require('./controllers/choiceController');
 
 // Routes
 
@@ -19,5 +20,10 @@ router.delete('/scene', sceneController.delete);
 router.put('/scene', sceneController.update);
 router.get('/scene', sceneController.get);
 router.get('/scenes', sceneController.getMultiple);
+
+// Choices
+router.post('/choice', choiceController.createAndAddToScene);
+router.delete('/choice', choiceController.delete);
+router.put('/choice', choiceController.update);
 
 module.exports = router;

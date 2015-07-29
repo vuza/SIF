@@ -3,7 +3,7 @@ var Scene = require('../models/scene');
 var Choice = require('../models/choice');
 
 var choiceController = {
-	create: function(req, res) {
+    createAndAddToScene: function(req, res) {
 
 	},
 
@@ -12,14 +12,6 @@ var choiceController = {
 	},
 
 	update: function(req, res) {
-
-	},
-
-	get: function(req, res) {
-
-	},
-
-	getByScene: function(req, res) {
 
 	}
 };
