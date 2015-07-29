@@ -6,15 +6,24 @@ var errHandler = require('./errHandler');
 var storyController = {
     create: function(req, res){
 
-        //Test code
-        var s = new Story({
-            title: 'TestStory',
-            author: 'Matthias Wagner',
+        //Get Data
+        var title = req.body.title;
+
+        //Validate
+        invalidReq = false;
+
+        if(title == '' || title.length<2)
+            invalidReq = true;
+
+        //Persist
+        var story = new Story({
+            title: title,
+            author: 'unknown',
             scenes: null,
-            avgRating: 3
+            avgRating: 0
         });
 
-        s.save(function (err) {
+        story.save(function (err) {
             if(errHandler.do(err, res)) return;
 
             res.status(200).send('ok');
