@@ -4,16 +4,40 @@ var Choice = require('../models/choice');
 var errHandler = require('./errHandler');
 
 var storyController = {
-    create: function(req, res){
-        // Create story
-        var s = new Story({
-            title: title,
-            text: text,
+    create: function(req, res) {
 
-            author: 'Matthias Wagner',
-            scenes: null,
-            avgRating: 3
-        });
+        //Get Data
+        var title = req.body.title;
+
+        //Validate
+        invalidReq = false;
+
+        if (title === '')
+            invalidReq = true;
+
+        if (!invalidReq) {
+            //Persist
+            var story = new Story({
+                title: title,
+                author: 'unknown',
+                scenes: null,
+                ratingCount: 0,
+                ratingSum: 0
+            });
+
+            story.save(function(err) {
+                if (errHandler.do(err, res)) return;
+
+                res.status(200).send('ok');
+            });
+        } else {
+            res.status(500).send('nok');
+        }
+    },
+
+    delete: function(req, res) {
+
+        var _id = req.query._id;
 
         Story.find({
             _id: _id
@@ -32,25 +56,21 @@ var storyController = {
             (req.body.scenes !== '' && typeof req.body.scenes != 'undefined') ?
             JSON.parse(req.body.scenes) :
             null;
-        var avgRating = req.body.avgRating;
 
         //Validate
         invalidReq = false;
 
-        if (title === '' || title.length < 2)
+        if (title === '')
             invalidReq = true;
 
         if (!invalidReq) {
             Story
                 .update({
                         _id: _id
-                    },
-
-                    {
+                    }, {
                         title: title,
                         author: 'unknown',
                         scenes: scenes,
-                        avgRating: avgRating
                     },
                     function(err) {
                         if (errHandler.do(err, res)) return;
@@ -66,7 +86,9 @@ var storyController = {
     get: function(req, res) {
         var _id = req.query._id;
 
-        Story.find({_id: _id}, function(err, story) {
+        Story.find({
+            _id: _id
+        }, function(err, story) {
             if (errHandler.do(err, res)) return;
 
             res.status(200).send(story);
@@ -82,7 +104,31 @@ var storyController = {
     },
 
     rate: function(req, res) {
-        //TODO
+        var _id = req.body._id;
+        var rating = parseInt(req.body.rating);
+
+        Story.findOne({
+            _id: _id
+        }, function(err, story) {
+            if (errHandler.do(err, res)) return;
+
+            var ratingCount = story.ratingCount + 1;
+            var ratingSum = story.ratingSum + rating;
+
+            Story
+                .update({
+                        _id: _id
+                    }, {
+                        ratingCount: ratingCount,
+                        ratingSum: ratingSum
+                    },
+                    function(err) {
+                        if (errHandler.do(err, res)) return;
+
+                        res.status(200).send('ok');
+                    }
+                );
+        });
     }
 };
 

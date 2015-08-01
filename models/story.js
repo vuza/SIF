@@ -5,7 +5,8 @@ var storySchema = new Schema({
     title: String,
     author: String,
     scenes: [{type: Schema.Types.ObjectId, ref: 'Scene'}],
-    avgRating: {type: Number, min: 0, max: 5}
+    ratingCount: Number,
+    ratingSum: Number
 });
 
 module.exports = mongoose.model('Story', storySchema);
