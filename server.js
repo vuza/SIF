@@ -1,10 +1,20 @@
+// General dependencies
 var express = require('express');
 var router = require('./router');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var expressSession = require('express-session');
 
 // Init App
 var app = express();
+
+// Authentication
+app.use(expressSession({secret: 'xxx'}));
+app.use(passport.initialize());
+app.use(passport.session());
+var authController = require('./controllers/authController');
+authController.init(passport);
 
 // Connect to DB
 mongoose.connect('mongodb://localhost/sif');
