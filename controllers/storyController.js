@@ -70,7 +70,7 @@ var storyController = {
                     }, {
                         title: title,
                         author: 'unknown',
-                        scenes: scenes,
+                        scenes: scenes
                     },
                     function(err) {
                         if (errHandler.do(err, res)) return;

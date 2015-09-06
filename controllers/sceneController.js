@@ -29,7 +29,7 @@ var sceneController = {
             var scene = new Scene({
                 title: title,
                 text: text,
-                choices: choices,
+                choices: [],
                 start: start
             });
 
